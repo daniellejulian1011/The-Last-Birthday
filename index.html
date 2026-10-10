@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b090b" />
+  <meta name="description" content="The Last Birthday — a branching first-person 3D horror experience in an abandoned 1970s celebration palace." />
+  <title>THE LAST BIRTHDAY — 1983</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="world" aria-label="First-person 3D game scene"></canvas>
+  <div id="vignette" aria-hidden="true"></div>
+  <div id="grain" aria-hidden="true"></div>
+  <div id="damageFlash" aria-hidden="true"></div>
+  <div id="photoFlash" aria-hidden="true"></div>
+  <div id="jumpscare" aria-hidden="true"></div>
+  <div id="reticle" aria-hidden="true"><i></i><i></i></div>
+
+  <main id="mainMenu" class="screen menu-screen">
+    <div class="menu-shadow"></div>
+    <div class="menu-content">
+      <p class="eyebrow">A CANDLEWICK STORY <span class="diamond">◆</span> OCTOBER 1983</p>
+      <h1><span>THE LAST</span><strong>BIRTHDAY</strong></h1>
+      <p class="menu-year"><span></span> 1 9 8 3 <span></span></p>
+      <nav class="main-nav" aria-label="Main menu">
+        <button id="newGameBtn" class="menu-btn selected">NEW GAME <span>↗</span></button>
+        <button id="continueBtn" class="menu-btn">CONTINUE <span>↗</span></button>
+        <button id="settingsBtn" class="menu-btn">SETTINGS <span>↗</span></button>
+        <button id="storyBtn" class="menu-btn">THE STORY <span>↗</span></button>
+      </nav>
+      <p class="menu-caption">SOME PARTIES NEVER END.</p>
+    </div>
+    <span class="menu-footer">CANDLEWICK'S CELEBRATION PALACE <b>·</b> CLOSED OCT 27, 1973</span>
+    <span class="menu-version">WEBGL SURVIVAL HORROR <b>·</b> PLAYABLE CHAPTER</span>
+  </main>
+
+  <section id="prologue" class="screen prologue-screen hidden" role="dialog" aria-label="Prologue">
+    <div class="prologue-inner">
+      <p class="eyebrow red">OCTOBER 27, 1983 · 11:47 PM</p>
+      <h2>YOU WEREN'T<br /><em>SUPPOSED</em> TO RETURN.</h2>
+      <p>Ten years ago, a fire tore through Candlewick's Celebration Palace. The emergency doors were chained. Your little brother, Robin, never came home.</p>
+      <p>Now someone has delivered a birthday invitation, written in his handwriting.</p>
+      <p class="prologue-quote">“One last party, June.”</p>
+      <button id="enterBtn" class="action-btn">ENTER THE PALACE <span>→</span></button>
+      <p class="control-hint">HEADPHONES RECOMMENDED · DESKTOP OR MOBILE</p>
+    </div>
+  </section>
+
+  <section id="hud" class="hud hidden" aria-label="Game HUD">
+    <div class="hud-top">
+      <div class="hud-brand"><b>THE LAST <span>BIRTHDAY</span></b><small>OCT 27, 1983 <i>●</i> <span id="clock">11:47 PM</span></small></div>
+      <div class="hud-state"><span id="chapterLabel">CHAPTER I / THE RETURN</span><button id="pauseBtn" title="Pause">Ⅱ</button></div>
+    </div>
+    <div id="objective" class="objective-card"><small>ACTIVE OBJECTIVE</small><strong>Find a way inside Candlewick's.</strong></div>
+    <div id="prompt" class="interaction-prompt hidden"><span>E</span> <b>INTERACT</b><span id="promptText"></span></div>
+    <div id="message" class="game-message hidden"></div>
+    <div id="threat" class="threat hidden">HE KNOWS WHERE YOU ARE</div>
+    <div class="hud-bottom">
+      <div class="hud-vitals">
+        <div class="vital"><div class="vital-label">🔦 BATTERY <b id="batteryValue">100%</b></div><div class="bar"><div id="batteryBar"></div></div></div>
+        <div class="vital"><div class="vital-label">🫀 STAMINA <b id="staminaValue">100%</b></div><div class="bar"><div id="staminaBar" class="stamina"></div></div></div>
+      </div>
+      <div class="hud-equipment"><button id="flashlightBtn" title="Toggle flashlight">🔦 <b>F</b></button><button id="cameraBtn" title="Camera flash">📷 <b>Q · <span id="filmCount">3</span></b></button><button id="journalBtn" title="Journal">▤ <b>J</b></button></div>
+    </div>
+    <div id="desktopControls" class="desktop-controls">WASD MOVE · MOUSE LOOK · SHIFT RUN · E INTERACT · F LIGHT · Q FLASH · J JOURNAL · ESC PAUSE</div>
+    <div id="touchControls" class="touch-controls hidden"><div id="joystick" class="joystick"><div id="joystickKnob"></div></div><div class="touch-right"><button id="touchRun">RUN</button><button id="touchInteract">E</button><button id="touchFlash">📷</button></div><p>DRAG RIGHT SIDE TO LOOK</p></div>
+  </section>
+
+  <section id="modalOverlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-label="Game dialog">
+    <div class="modal-card" id="modalCard"><button id="modalClose" class="close-btn" aria-label="Close">×</button><div id="modalContent"></div></div>
+  </section>
+
+  <section id="endingScreen" class="screen ending-screen hidden"><div class="ending-content"><p class="eyebrow red">THE LAST BIRTHDAY · 1983</p><p id="endingId" class="ending-id">ENDING 01 / 06</p><h2 id="endingTitle">THE TRUTH</h2><p id="endingDescription"></p><div id="endingStats" class="ending-stats"></div><button id="restartBtn" class="action-btn">PLAY AGAIN <span>↺</span></button><button id="endingMenuBtn" class="text-btn">BACK TO TITLE</button></div></section>
+  <div id="loading" class="loading"><p>THE LAST BIRTHDAY</p><div class="load-track"><div></div></div><small>PREPARING THE PARTY...</small></div>
+  <script type="module" src="src/game.js"></script>
+</body>
+</html>
